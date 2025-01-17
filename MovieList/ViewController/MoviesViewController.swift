@@ -8,6 +8,7 @@
 import UIKit
 
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+ 
 
     
     var movies: [Movie]? {
@@ -52,10 +53,31 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesTableViewCell", for: indexPath) as? MoviesTableViewCell else {
             return UITableViewCell()
         }
-        let movie = movies?[indexPath.row]
-      
-        
-        
+
+        guard let movie = movies?[indexPath.row] else {
+           // cell.imageView?.image = UIImage(named: "placeholder") // Set a placeholder image
+            return cell
+        }
+
+
+        // Check cache for the image
+        if let cachedImage = ImageCache.shared.getImage(forKey: movie.posterPath) {
+            cell.imageView?.image = cachedImage
+        } else {
+            // Download the image if not in cache
+            MovieController.returnMovieImage(path: movie.posterPath) { image in
+                guard let image = image else { return } // Handle nil image 
+
+                // Cache the image
+                ImageCache.shared.setImage(image, forKey: movie.posterPath)
+
+                // Reload the cell to refresh the image
+                DispatchQueue.main.async {
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        }
+
         return cell
     }
     

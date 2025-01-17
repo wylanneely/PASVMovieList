@@ -78,24 +78,22 @@ class NetworkController {
     }
     
     static func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-        
-            if let error = error {
-                print("Error downloading image: \(error.localizedDescription)")
-                completion(nil)
-                return
-            }
-            
-            guard let data = data,
-                  let image = UIImage(data: data) else {
-                print("Failed to load image data")
-                completion(nil)
-                return
-            }
-            completion(image)
-        }
-        task.resume()
-    }
+           let task = URLSession.shared.dataTask(with: url) { data, _, error in
+               if let error = error {
+                   print("Error downloading image: \(error.localizedDescription)")
+                   completion(nil)
+                   return
+               }
+
+               guard let data = data, let image = UIImage(data: data) else {
+                   print("Failed to decode image data")
+                   completion(nil)
+                   return
+               }
+
+               completion(image)
+           }
+           task.resume()
+       }
     
 }

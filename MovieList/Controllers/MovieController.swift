@@ -40,14 +40,17 @@ class MovieController {
     }
     
     
-    static func returnMovieImage(path: String ) -> UIImage? {
-        let imageBaseString = "https://image.tmdb.org/t/p/w500/" // Done for speed, the way that interviewers would like to see it addded, would be by creating a URL first and then appending path components. the path component would be the path
-        
-        let imageURLString = imageBaseString + path  //Homework turn this into a URL + appending path component
-        NetworkController.downloadImage(from: URL(string: imageURLString)!) { image in
-            
+    static func returnMovieImage(path: String, completion: @escaping (UIImage?) -> Void) {
+        let imageBaseString = "https://image.tmdb.org/t/p/w500/"
+        guard let baseURL = URL(string: imageBaseString) else {
+            completion(nil)
+            return
         }
+        let fullURL = baseURL.appendingPathComponent(path)
         
+        NetworkController.downloadImage(from: fullURL) { image in
+            completion(image)
+        }
     }
     
     
