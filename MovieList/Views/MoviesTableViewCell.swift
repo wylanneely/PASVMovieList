@@ -14,13 +14,8 @@ class MoviesTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func setOutlets(image:UIImage,title: String) {
-        self.movieImage.image = image
-        self.title.text = title
-    }
-    
     @IBOutlet weak var movieImage: UIImageView!
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var overview: UILabel!
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {

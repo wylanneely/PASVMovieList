@@ -22,3 +22,4 @@ class ImageCache {
         cache.setObject(image, forKey: key as NSString)
     }
 }
+

@@ -27,14 +27,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
     @IBOutlet weak var tableview: UITableView!
     
     func setUpTableView(){
@@ -55,11 +48,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         guard let movie = movies?[indexPath.row] else {
-           // cell.imageView?.image = UIImage(named: "placeholder") // Set a placeholder image
             return cell
         }
 
-
+        cell.overview.text = movie.overview
         // Check cache for the image
         if let cachedImage = ImageCache.shared.getImage(forKey: movie.posterPath) {
             cell.imageView?.image = cachedImage
@@ -81,6 +73,9 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 240
+    }
 
 }
 

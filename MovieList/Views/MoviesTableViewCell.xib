@@ -18,28 +18,29 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="73C-4l-ejz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="146"/>
+                        <rect key="frame" x="166" y="0.0" width="154" height="146"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MovieTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSk-L2-TOe">
-                        <rect key="frame" x="99.333333333333343" y="56.333333333333343" width="121.33333333333334" height="33.666666666666657"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSk-L2-TOe">
+                        <rect key="frame" x="16" y="0.0" width="75.333333333333329" height="146"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="fSk-L2-TOe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="42b-rF-agC"/>
-                    <constraint firstItem="73C-4l-ejz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VVz-rq-WRI"/>
-                    <constraint firstAttribute="bottom" secondItem="73C-4l-ejz" secondAttribute="bottom" id="YeD-u9-2UE"/>
-                    <constraint firstItem="fSk-L2-TOe" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="h4q-p2-pEZ"/>
-                    <constraint firstAttribute="trailing" secondItem="73C-4l-ejz" secondAttribute="trailing" id="nEu-Kk-z3u"/>
-                    <constraint firstItem="73C-4l-ejz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="oIC-r2-v8L"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="73C-4l-ejz" secondAttribute="trailing" constant="-16" id="7Kc-ee-hsr"/>
+                    <constraint firstItem="73C-4l-ejz" firstAttribute="leading" secondItem="fSk-L2-TOe" secondAttribute="trailing" constant="74.670000000000002" id="EYh-sf-Uoz"/>
+                    <constraint firstItem="fSk-L2-TOe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="WLX-QE-dXK"/>
+                    <constraint firstItem="73C-4l-ejz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZxQ-2Y-rpD"/>
+                    <constraint firstItem="fSk-L2-TOe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ot3-xO-MeS"/>
+                    <constraint firstAttribute="bottom" secondItem="73C-4l-ejz" secondAttribute="bottom" id="vMv-uY-RJ2"/>
+                    <constraint firstAttribute="bottom" secondItem="fSk-L2-TOe" secondAttribute="bottom" id="wh5-dR-NQm"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="movieImage" destination="73C-4l-ejz" id="UGh-gB-BCw"/>
-                <outlet property="title" destination="fSk-L2-TOe" id="OxD-wv-6Lv"/>
+                <outlet property="overview" destination="fSk-L2-TOe" id="OxD-wv-6Lv"/>
             </connections>
             <point key="canvasLocation" x="129.7709923664122" y="24.647887323943664"/>
         </tableViewCell>
