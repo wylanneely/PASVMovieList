@@ -52,9 +52,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         cell.overview.text = movie.overview
+        cell.title.text = movie.title
         // Check cache for the image
         if let cachedImage = ImageCache.shared.getImage(forKey: movie.posterPath) {
-            cell.imageView?.image = cachedImage
+            cell.movieImage.image = cachedImage
         } else {
             // Download the image if not in cache
             MovieController.returnMovieImage(path: movie.posterPath) { image in
@@ -71,6 +72,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
