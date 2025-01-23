@@ -74,13 +74,31 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    var selectedMovie: Movie?
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let selectedMovie = movies?[indexPath.row] else {
+            return
+        }
+        self.selectedMovie = selectedMovie
+        self.performSegue(withIdentifier: "toDetailView", sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 240
     }
 
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailView",
+            let destinationVC = segue.destination as? DetailViewController,
+           let selectedMovie = selectedMovie {
+            
+            destinationVC.movie = selectedMovie
+        }
+    }
+    
 }
 
